@@ -1,6 +1,7 @@
 import streamlit as st
 from io import BytesIO
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4, landscape
 
 col1, col2, col3 = st.columns([1,4,1])
 
@@ -76,12 +77,12 @@ with col2:
 with col3:
     bemerkungen5 = st.text_input("Bemerkungen #5: ")
 
-def createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer) -> bytes:
+def createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer, datum1, tätigkeit1, bemerkungen1, datum2, tätigkeit2, bemerkungen2, datum3, tätigkeit3, bemerkungen3, datum4, tätigkeit4, bemerkungen4, datum5, tätigkeit5, bemerkungen5) -> bytes:
     """Creates a simple PDF in memory and returns its bytes."""
     buffer = BytesIO()
 
         # Create a PDF canvas that writes into the buffer
-    c = canvas.Canvas(buffer)
+    c = canvas.Canvas(buffer, pagesize=landscape(A4))
 
         # Write some text into the PDF
     c.setFont("Helvetica", 16)
@@ -89,13 +90,33 @@ def createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer) 
 
     c.setFont("Helvetica", 12)
 
-    c.drawString(72, 760, f"Lehrling: {lehrlingName}")
-    c.drawString(72, 740, f"Kalenderwoche: {kalenderwoche}")
-    c.drawString(72, 720, f"Vom: {vomDatum}")
-    c.drawString(200, 720, f"Bis: {bisDatum}")
+    c.drawString(72, 500, f"Lehrling: {lehrlingName}")
+    c.drawString(220, 500, f"Kalenderwoche: {kalenderwoche}")
+    c.drawString(350, 500, f"Vom: {vomDatum}")
+    c.drawString(480, 500, f"Bis: {bisDatum}")
 
-    c.drawString(72, 700, f"Gruppe: {gruppe}")
-    c.drawString(200, 700, f"Trainer: {trainer}")
+    c.drawString(72, 470, f"Gruppe: {gruppe}")
+    c.drawString(200, 470, f"Trainer: {trainer}")
+
+    c.drawString(72, 410, "Datum")
+    c.drawString(200, 410, "Tätigkeit")
+    c.drawString(530, 410, "Bemerkungen")
+
+    c.drawString(72, 380, f"{datum1}")
+    c.drawString(200, 380, f"{tätigkeit1}")
+    c.drawString(530, 380, f"{bemerkungen1}")
+    c.drawString(72, 360, f"{datum2}")
+    c.drawString(200, 360, f"{tätigkeit2}")
+    c.drawString(530, 360, f"{bemerkungen2}")
+    c.drawString(72, 340, f"{datum3}")
+    c.drawString(200, 340, f"{tätigkeit3}")
+    c.drawString(520, 340, f"{bemerkungen3}")
+    c.drawString(72, 320, f"{datum4}")
+    c.drawString(200, 320, f"{tätigkeit4}")
+    c.drawString(520, 320, f"{bemerkungen4}")
+    c.drawString(72, 300, f"{datum5}")
+    c.drawString(200, 300, f"{tätigkeit5}")
+    c.drawString(520, 300, f"{bemerkungen5}")
 
     # Finish the PDF
     c.showPage()
@@ -106,7 +127,7 @@ def createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer) 
     return buffer.read()
 
 if st.button("Create PDF"):
-    pdf_bytes = createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer)
+    pdf_bytes = createPDF(lehrlingName, kalenderwoche, vomDatum, bisDatum, gruppe, trainer, datum1, tätigkeit1, bemerkungen1, datum2, tätigkeit2, bemerkungen2, datum3, tätigkeit3, bemerkungen3, datum4, tätigkeit4, bemerkungen4, datum5, tätigkeit5, bemerkungen5)
     st.success("Successfully created PDF!")
     st.download_button(
         label="Download PDF",
