@@ -38,7 +38,7 @@ col1, col2, col3, col4 = st.columns([1, 1, 2, 1])
 with col1:
     datum1 = st.text_input("Datum #1: ", max_chars=10)
 with col2:
-    trainer1 = st.text_input("Trainer/-in #1: ")
+    trainer1 = st.text_input("Trainer/-in #1: ", max_chars=12)
 with col3:
     tätigkeit1 = st.text_input("Tätigkeit #1: ", max_chars=125)
 with col4:
@@ -48,7 +48,7 @@ with col4:
 with col1:
     datum2 = st.text_input("Datum #2: ", max_chars=10)
 with col2:
-    trainer2 = st.text_input("Trainer/-in #2: ")
+    trainer2 = st.text_input("Trainer/-in #2: ", max_chars=12)
 with col3:
     tätigkeit2 = st.text_input("Tätigkeit #2: ", max_chars=125)
 with col4:
@@ -58,7 +58,7 @@ with col4:
 with col1:
     datum3 = st.text_input("Datum #3: ", max_chars=10)
 with col2:
-    trainer3 = st.text_input("Trainer/-in #3: ")
+    trainer3 = st.text_input("Trainer/-in #3: ", max_chars=12)
 with col3:
     tätigkeit3 = st.text_input("Tätigkeit #3: ", max_chars=125)
 with col4:
@@ -68,7 +68,7 @@ with col4:
 with col1:
     datum4 = st.text_input("Datum #4: ", max_chars=10)
 with col2:
-    trainer4 = st.text_input("Trainer/-in #4: ")
+    trainer4 = st.text_input("Trainer/-in #4: ", max_chars=12)
 with col3:
     tätigkeit4 = st.text_input("Tätigkeit #4: ", max_chars=125)
 with col4:
@@ -78,7 +78,7 @@ with col4:
 with col1:
     datum5 = st.text_input("Datum #5: ", max_chars=10)
 with col2:
-    trainer5 = st.text_input("Trainer/-in #5: ")
+    trainer5 = st.text_input("Trainer/-in #5: ", max_chars=12)
 with col3:
     tätigkeit5 = st.text_input("Tätigkeit #5: ", max_chars=125)
 with col4:
